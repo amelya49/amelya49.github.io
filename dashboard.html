@@ -33,12 +33,21 @@
     text-decoration: none;
     font-size: 0.85rem;
   }
+  .heart {
+    font-size: 5rem;
+    margin: 1rem 0;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
 </style>
 </head>
 <body>
   <div class="card">
-    <h1>✅ Angemeldet</h1>
-    <p>Du bist erfolgreich eingeloggt. Von hier aus kann später der eigentliche Bereich mit Inhalten weitergebaut werden.</p>
+    <div class="heart">❤️</div>
+    <p>ICH LIEBE DICH!</p>
     <a href="login.html">← Zurück zum Login</a>
   </div>
 </body>
