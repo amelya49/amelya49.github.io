@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top, #1a2233 0%, #0b0f17 60%);
+    font-family: system-ui, sans-serif;
+    color: #e6e9f0;
+  }
+
+  .card {
+    background: #111726;
+    border: 1px solid #232c42;
+    border-radius: 16px;
+    padding: 2.5rem 2.5rem 2rem;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  }
+
+  .logo {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #3b82f6, #1e40af);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 1.3rem;
+    margin: 0 0 0.25rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #7b869c;
+    margin-bottom: 1.75rem;
+  }
+
+  label {
+    display: block;
+    font-size: 0.8rem;
+    color: #9aa4b8;
+    margin-bottom: 0.35rem;
+    margin-top: 1rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border-radius: 8px;
+    border: 1px solid #2a3348;
+    background: #0c111d;
+    color: #e6e9f0;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+
+  input:focus {
+    border-color: #3b82f6;
+  }
+
+  .device-select {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+  }
+
+  .device-option {
+    flex: 1;
+    border: 1px solid #2a3348;
+    border-radius: 10px;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    background: #0c111d;
+  }
+
+  .device-option:hover {
+    border-color: #3b82f6;
+  }
+
+  .device-option.active {
+    border-color: #3b82f6;
+    background: #142036;
+  }
+
+  .device-option svg {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 0.4rem;
+    stroke: #9aa4b8;
+    transition: stroke 0.15s ease;
+  }
+
+  .device-option.active svg {
+    stroke: #3b82f6;
+  }
+
+  .device-option span {
+    display: block;
+    font-size: 0.75rem;
+    color: #9aa4b8;
+  }
+
+  .device-option.active span {
+    color: #e6e9f0;
+  }
+
+  button.login-btn {
+    width: 100%;
+    margin-top: 1.75rem;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #3b82f6, #1e40af);
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+
+  button.login-btn:hover {
+    opacity: 0.9;
+  }
+
+  .error-msg {
+    color: #f87171;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 0.9rem;
+    min-height: 1rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 1.75rem;
+    font-size: 0.75rem;
+  }
+
+  .footer-links a {
+    color: #5b6780;
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: #9aa4b8;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">🔒</div>
+  <h1>Anmeldung</h1>
+  <p class="subtitle">Melde dich mit deiner Dienstnummer an</p>
+
+  <form id="loginForm">
+    <label for="badge">Dienstnummer</label>
+    <input type="text" id="badge" placeholder="z.B. 4021" required>
+
+    <label for="password">Passwort</label>
+    <input type="password" id="password" placeholder="••••••••" required>
+
+    <div class="device-select">
+      <div class="device-option active" data-device="computer">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="12" rx="2"/>
+          <path d="M8 20h8M12 16v4"/>
+        </svg>
+        <span>Computer</span>
+      </div>
+      <div class="device-option" data-device="tablet">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2"/>
+          <path d="M12 18h.01"/>
+        </svg>
+        <span>Tablet</span>
+      </div>
+      <div class="device-option" data-device="panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M3 9h18M9 21V9"/>
+        </svg>
+        <span>Panel</span>
+      </div>
+    </div>
+
+    <button type="submit" class="login-btn">Login</button>
+    <div class="error-msg" id="errorMsg"></div>
+  </form>
+
+  <div class="footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+  </div>
+</div>
+
+<script>
+  // Geräteauswahl umschalten
+  document.querySelectorAll('.device-option').forEach(option => {
+    option.addEventListener('click', () => {
+      document.querySelectorAll('.device-option').forEach(o => o.classList.remove('active'));
+      option.classList.add('active');
+    });
+  });
+
+  // Demo-Login (noch ohne echte Prüfung, folgt später)
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const badge = document.getElementById('badge').value;
+    const password = document.getElementById('password').value;
+    const errorMsg = document.getElementById('errorMsg');
+
+    if (badge && password) {
+      errorMsg.style.color = '#4ade80';
+      errorMsg.textContent = 'Login erfolgreich (Demo)';
+    } else {
+      errorMsg.style.color = '#f87171';
+      errorMsg.textContent = 'Bitte alle Felder ausfüllen';
+    }
+  });
+</script>
+
+</body>
+</html>
